@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var user: UserManger
-    //@EnvironmentObject var manager: StorageManager
     @StateObject private var timer = TimeCounter()
     
     var body: some View {
@@ -18,8 +17,10 @@ struct ContentView: View {
                 .font(.largeTitle)
             Text("\(timer.counter)")
                 .font(.largeTitle)
-                .overlay(Circle(ra)
-                            .stroke(Color.black, lineWidth: 3)
+                .overlay(
+                    Circle()
+                        .stroke(changeCircleColor(timer.counter), lineWidth: 3)
+                        .frame(width: 100, height: 100)
                     
                 )
             ButtonView(
@@ -33,6 +34,15 @@ struct ContentView: View {
                 buttonTitle: "Log Out")
         }.padding()
             
+    }
+    
+    private func changeCircleColor(_ number: Int) -> Color {
+        switch number {
+        case 2: return .green
+        case 1: return .pink
+        case 0: return .orange
+        default: return .black
+        }
     }
 }
 
