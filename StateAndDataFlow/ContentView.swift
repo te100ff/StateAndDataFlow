@@ -9,23 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var user: UserManger
+    //@EnvironmentObject var manager: StorageManager
     @StateObject private var timer = TimeCounter()
     
     var body: some View {
-        VStack {
+        VStack(spacing: 100) {
             Text("Hi, \(user.name)!")
                 .font(.largeTitle)
-                .offset(x: 0, y: 100)
             Text("\(timer.counter)")
                 .font(.largeTitle)
-                .offset(x: 0, y: 200)
-            Spacer()
-            ButtonView(timer: timer)
-            Spacer()
-            Button("Log out") {
-                
-            }
-        }
+                .overlay(Circle(ra)
+                            .stroke(Color.black, lineWidth: 3)
+                    
+                )
+            ButtonView(
+                action: timer.startTimer,
+                       color: .red,
+                buttonTitle: timer.buttonTitle
+            )
+            ButtonView(
+                action: user.logOut,
+                color: .blue,
+                buttonTitle: "Log Out")
+        }.padding()
             
     }
 }
@@ -38,17 +44,19 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct ButtonView: View {
-    @ObservedObject var timer: TimeCounter
+    let action: () -> Void
+    let color: Color
+    let buttonTitle: String
     
     var body: some View {
-        Button(action: timer.startTimer) {
-            Text(timer.buttonTitle)
+        Button(action: action) {
+            Text(buttonTitle)
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
         }
         .frame(width: 200, height: 60)
-        .background(Color.red)
+        .background(color)
         .cornerRadius(20)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
