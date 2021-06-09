@@ -19,13 +19,12 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .overlay(
                     Circle()
-                        .stroke(changeCircleColor(timer.counter), lineWidth: 3)
+                        .stroke(changeCircleColor(timer.counter),lineWidth: 3)
                         .frame(width: 100, height: 100)
-                    
                 )
             ButtonView(
                 action: timer.startTimer,
-                       color: .red,
+                color: .red,
                 buttonTitle: timer.buttonTitle
             )
             ButtonView(

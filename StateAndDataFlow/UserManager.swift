@@ -5,7 +5,6 @@
 //  Created by Alexey Efimov on 08.06.2021.
 //
 
-import Combine
 import SwiftUI
 
 class UserManger: ObservableObject {

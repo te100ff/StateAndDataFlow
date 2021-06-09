@@ -18,7 +18,6 @@ struct RegisterView: View {
                     .multilineTextAlignment(.center)
                 Text("\(name.count)")
                     .foregroundColor(name.count < 3 ? .red : .green)
-                
             }
             .padding()
             Button(action: registerUser) {
