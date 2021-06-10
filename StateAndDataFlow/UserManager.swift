@@ -8,11 +8,7 @@
 import SwiftUI
 
 class UserManger: ObservableObject {
-    @AppStorage("isRegister") var isRegister = false
-    @AppStorage("name") var name = ""
+   @Published var isRegister = false
+   var name = ""
     
-    func logOut() {
-        isRegister = false
-        name = ""
-    }
 }

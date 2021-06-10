@@ -10,6 +10,7 @@ import SwiftUI
 struct RegisterView: View {
     @State private var name = ""
     @EnvironmentObject var user: UserManger
+    @EnvironmentObject var manger: StorageManager
     
     var body: some View {
         VStack {
@@ -27,12 +28,14 @@ struct RegisterView: View {
                 }
             }
             .disabled(name.count < 3)
+            
         }
     }
     private func registerUser() {
         if !name.isEmpty {
             user.name = name
             user.isRegister.toggle()
+            manger.save(user: user)
         }
     }
 }
