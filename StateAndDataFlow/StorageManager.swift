@@ -7,9 +7,15 @@
 
 import SwiftUI
 
-class StorageManager: ObservableObject {
-    @AppStorage("name") var name = ""
-    @AppStorage("isRegister") var isRegister = false
+class StorageManager: UserManger {
+    //var objectWillChange: ObservableObjectPublisher
+    
+    @AppStorage("name") var namstorageName = ""
+    @AppStorage("isRegister") var status: Bool = false
+    
+//    override init(name: String, isRegister: Bool) {
+//        <#code#>
+//    }
     
     func save(user: UserManger) {
         name = user.name

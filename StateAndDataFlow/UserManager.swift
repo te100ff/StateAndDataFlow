@@ -8,7 +8,14 @@
 import SwiftUI
 
 class UserManger: ObservableObject {
-   @Published var isRegister = false
-   var name = ""
+    @Published var isRegister: Bool
+    var name: String
+    
+    internal init(name: String, isRegister: Bool) {
+        self.name = name
+        self.isRegister = isRegister
+    }
+
+    
     
 }

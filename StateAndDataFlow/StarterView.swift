@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StarterView: View {
     @EnvironmentObject var user: UserManger
+    @EnvironmentObject var manger: StorageManager
        
     var body: some View {
         Group {
